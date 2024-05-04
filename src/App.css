@@ -1,8 +1,8 @@
 body {
-  background: linear-gradient(90deg, #f9d176, #70d9ae, #5fc1ec);
   font-family: system-ui;
   margin: 0;
   padding: 0;
+  min-width: min-content;
 }
 
 .countries {
@@ -48,17 +48,16 @@ body {
   align-items: center;
   flex-direction: column;
   font-size: 18px;
-  
 
   table,
   td,
   tr {
-    border: solid rgb(193, 193, 193) 1px;
+    border: solid rgb(255, 255, 255) 1px;
     border-collapse: collapse;
   }
 
   tr {
-    background: #d2d2d2;
+    background: #dadada;
 
     td:nth-child(odd) {
       font-weight: bolder;
@@ -79,6 +78,7 @@ body {
 
   table {
     width: 500px;
+    margin: 10px 0;
   }
 
   img {
@@ -93,6 +93,28 @@ body {
   justify-content: center;
 }
 
-.demo-logo {
-  color:#70d9ae;
+.nav {
+  color: #70d9ae;
+}
+
+.nav:hover {
+  background: #f9d176;
+  color: black;
+  cursor: pointer;
+}
+
+.nav:active {
+  background:  #70d9ae;
+}
+
+.content {
+  background: linear-gradient(90deg, #f9d176, #70d9ae, #5fc1ec);
+  min-height: 80vh;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.footer {
+  text-align: center;
+  background: rgb(231, 231, 231);
 }

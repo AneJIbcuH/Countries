@@ -1,19 +1,18 @@
 import { useGetCountryQuery } from "../store/testApi";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Spin } from "antd";
 
 const Country: React.FC = () => {
   const { name } = useParams();
-  const { data: country, isLoading } = useGetCountryQuery(name!);
-  const navigate = useNavigate();
+  const { data: country, isLoading, isError } = useGetCountryQuery(name!);
 
   if (isLoading) return <Spin fullscreen />;
-  console.log(country![0]);
+  if (isError) return <h1>Ошибкa</h1>
+  
   const CTR = country![0];
 
   return (
     <div className="country">
-      <button onClick={() => navigate("/")}>Назад</button>
       <table>
         <tbody>
           <tr>

@@ -3,10 +3,11 @@ import { useGetCountriesQuery } from "../store/testApi";
 import { Spin } from 'antd';
 
 const Countries: React.FC = () => {
-  const { data: countries, isLoading } = useGetCountriesQuery("");
+  const { data: countries, isLoading, isError } = useGetCountriesQuery("");
   const navigate = useNavigate();
 
   if (isLoading) return <Spin fullscreen />;
+  if (isError) return <h1>Ошибкa</h1>
 
   return (
     <div className="countries">
