@@ -8,7 +8,7 @@ const Country: React.FC = () => {
 
   if (isLoading) return <Spin fullscreen />;
   if (isError) return <h1>Ошибкa</h1>
-  
+
   const CTR = country![0];
 
   return (
@@ -48,12 +48,12 @@ const Country: React.FC = () => {
               <img src={CTR.flags.png} alt="" />
             </td>
           </tr>
-          <tr>
+          {CTR.coatOfArms.png && <tr>
             <td>Герб</td>
             <td className="country-table-td-img">
               <img src={CTR.coatOfArms.png} alt="" />
             </td>
-          </tr>
+          </tr>}
         </tbody>
       </table>
     </div>
