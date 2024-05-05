@@ -7,9 +7,10 @@ const Country: React.FC = () => {
   const { data: country, isLoading, isError } = useGetCountryQuery(name!);
 
   if (isLoading) return <Spin fullscreen />;
-  if (isError) return <h1>Ошибкa</h1>
+  if (isError) return <h1>Ошибкa</h1>;
 
   const CTR = country![0];
+  console.log(CTR.population.toString()[CTR.population.toString().length - 1]);
 
   return (
     <div className="country">
@@ -29,11 +30,15 @@ const Country: React.FC = () => {
           </tr>
           <tr>
             <td>Площадь</td>
-            <td>{CTR.area} км&#178;</td>
+            <td>{CTR.area.toLocaleString()} км&#178;</td>
           </tr>
           <tr>
             <td>Население</td>
-            <td>{CTR.population} человек</td>
+            <td>
+              {CTR.population.toLocaleString()} человек
+              {["2", "3", "4"].includes(CTR.population.toString().slice(-1)) &&
+                "а"}
+            </td>
           </tr>
           <tr>
             <td>Валюта</td>
@@ -48,12 +53,14 @@ const Country: React.FC = () => {
               <img src={CTR.flags.png} alt="" />
             </td>
           </tr>
-          {CTR.coatOfArms.png && <tr>
-            <td>Герб</td>
-            <td className="country-table-td-img">
-              <img src={CTR.coatOfArms.png} alt="" />
-            </td>
-          </tr>}
+          {CTR.coatOfArms.png && (
+            <tr>
+              <td>Герб</td>
+              <td className="country-table-td-img">
+                <img src={CTR.coatOfArms.png} alt="" />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
