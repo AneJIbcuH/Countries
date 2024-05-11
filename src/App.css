@@ -12,34 +12,82 @@ body {
 }
 
 .countries-card {
+  position: relative;
   border-radius: 10px;
-  margin: 20px;
-  width: 300px;
-  height: 300px;
+  margin: 10px;
+  width: 240px;
+  height: 240px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
   text-align: center;
   background: white;
-  box-shadow: 10px 10px 15px rgb(94, 93, 93);
+  box-shadow: 5px 5px 15px rgb(94, 93, 93);
+  transition: all 0.3s ease;
+
+  img {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    box-shadow: 5px 5px 15px rgb(94, 93, 93);
+    margin-top: 10px;
+    transition: all 0.3s;
+  }
+
+  button {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    border: none;
+    color: rgb(157, 157, 157);
+    cursor: pointer;
+    font-size: 30px;
+    background: transparent;
+    transition: color 0.3s;
+  }
+
+  button:hover {
+    color: #f9d176;
+  }
 }
 
-.countries-card img {
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  box-shadow: 10px 10px 15px rgb(94, 93, 93);
+.countries-card-button-active {
+  /* color: #f9d176; */
+  /* transition: color 0.3s; */
+}
+
+/* .countries-card-button-active:hover {
+  color: #70d9ae;
+} */
+
+.countries-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 5px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  transition: text-shadow 0.3s;
+
+  h3 {
+    margin: 0;
+  }
 }
 
 .countries-card:hover {
-  box-shadow: 10px 10px 35px #f9d176;
+  box-shadow: 5px 5px 15px #f9d176;
   cursor: pointer;
   color: #f9d176;
+  background: #c2c2c2;
 
   img {
-    box-shadow: 10px 10px 35px #f9d176;
+    box-shadow: 5px 5px 15px #f9d176;
+  }
+
+  .countries-card-title {
+    text-shadow: 3px 3px 2px rgb(0, 0, 0);
   }
 }
 
@@ -95,6 +143,10 @@ body {
 
 .nav {
   color: #70d9ae;
+  padding: 0 8px;
+  transition: all 0.3s;
+  font-size: 14px;
+  /* font-weight: 600; */
 }
 
 .nav:hover {
@@ -104,17 +156,16 @@ body {
 }
 
 .nav:active {
-  background:  #70d9ae;
-}
-
-.content {
-  background: linear-gradient(90deg, #f9d176, #70d9ae, #5fc1ec);
-  min-height: 80vh;
-  margin: 10px 0;
-  border-radius: 10px;
+  background: #70d9ae;
 }
 
 .footer {
   text-align: center;
   background: rgb(231, 231, 231);
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }

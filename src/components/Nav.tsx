@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Layout } from "antd";
+import { HeartOutlined, HomeOutlined } from "@ant-design/icons";
 
 const { Header } = Layout;
 
@@ -18,7 +19,10 @@ const Nav: React.FC = () => {
       }}
     >
       <div className="nav" onClick={() => navigate("/")}>
-        Главная
+      <HomeOutlined /> Главная
+      </div>
+      <div className="nav" onClick={() => navigate("/favorites")}>
+      <HeartOutlined /> Избранное 
       </div>
     </Header>
   );
