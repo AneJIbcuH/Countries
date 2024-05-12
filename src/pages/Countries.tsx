@@ -13,7 +13,7 @@ const Countries: React.FC = () => {
   const { addFavorite, removeFavorite } = useActions();
   const { favorites } = useAppSelector((state) => state.favorites);
   const [filter, setFilter] = useState("");
-  const [sortBy, setSortBy] = useState<"name" | "population" | "">();
+  const [sortBy, setSortBy] = useState<string>();
 
   if (isLoading) return <Spin fullscreen />;
   if (isError) return <h1>Ошибкa</h1>;
@@ -22,11 +22,18 @@ const Countries: React.FC = () => {
     .filter((country) =>
       country.name.common.toLowerCase().includes(filter.toLowerCase())
     )
-    .sort((a, b) =>
-      sortBy === "name"
-        ? a.name.common.localeCompare(b.name.common)
-        : b.population - a.population
-    );
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "name":
+          return a.name.common.localeCompare(b.name.common);
+        case "population":
+          return b.population - a.population;
+        case "area":
+          return b.area - a.area;
+        default:
+          return 0;
+      }
+    });
 
   function changeFavorites(
     country: ICountry,
@@ -35,7 +42,7 @@ const Countries: React.FC = () => {
     e?.stopPropagation();
     favorites.find((el) => el.name.common === country.name.common)
       ? removeFavorite(country)
-      : addFavorite(country)
+      : addFavorite(country);
   }
 
   return (
@@ -58,6 +65,7 @@ const Countries: React.FC = () => {
           options={[
             { value: "name", label: "По имени" },
             { value: "population", label: "По населению" },
+            { value: "area", label: "По площади" },
           ]}
         />
       </div>
